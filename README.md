@@ -5,6 +5,9 @@
 <aside>
 📌 **Base 브랜치(upstream)의 종류**
 
+- `main` - 릴리즈
+- `develop` - 개발
+
 **Local 브랜치의 종류**
 
 - `feature/{ticket|name}` - 계획된 피쳐 개발(T1)
@@ -30,15 +33,3 @@
 - [질문] - 단순 질문. 해결되지 않아도 머지 가능
 - [의견] - 단순 간단 의견. 해결되지 않아도 머지 가능
 - [변경요청] - 동작하지 않는 부분이나 잘못된 부분이 있을 때(반드시 수정 필요)
-
-### Tip
-
-<aside>
-💡 hint: The '.husky/pre-push' hook was ignored because it's not set as executable
-</aside>
-
-push 할 때 위와 같은 에러가 나오시나요? .husky 디렉터리의 권한 설정을 안해줘서 그렇습니다.아래 명령어를 실행해보세요.
-
-```bash
-chmod ug+x .husky/*
-```
