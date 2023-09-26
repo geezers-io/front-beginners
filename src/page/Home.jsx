@@ -1,5 +1,11 @@
 import react from "react";
+import test from "../api/test";
 
+export default function Home() {
 
+    test();
 
-제가 만약에 여기를 바꿨어요 
+    return (
+        <div>heejung.</div>
+    );
+}
