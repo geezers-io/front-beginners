@@ -1,7 +1,7 @@
 /* modules */
-import { Card, CardHeader, CardBody, CardFooter, theme as chakraTheme, extendBaseTheme } from '@chakra-ui/react';
+import { theme as chakraTheme, extendTheme } from '@chakra-ui/react';
 import { ChakraProvider } from '@chakra-ui/react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import Home from '@/pages';
 import About from '@/pages/about';
 import MovieList from './page/MovieList';
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
 
 const { Button } = chakraTheme.components;
 
-const theme = extendBaseTheme({
+const theme = extendTheme({
   components: {
     Button,
   },
