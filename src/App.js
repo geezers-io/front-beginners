@@ -1,7 +1,8 @@
-import { ChakraProvider } from '@chakra-ui/react';
+import {  Card, CardHeader, CardBody, CardFooter} from '@chakra-ui/react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from '@/pages';
 import About from '@/pages/about';
+import MovieList from './page/MovieList';
 
 const router = createBrowserRouter([
   {
@@ -14,12 +15,20 @@ const router = createBrowserRouter([
   },
 ]);
 
-const App = () => {
+const { Button } = chakraTheme.components
+
+const theme = extendBaseTheme({
+  components: {
+    Button,
+  },
+})
+
+function App() {
   return (
-    <ChakraProvider theme={{}}>
-      <RouterProvider router={router} />
+    <ChakraProvider theme={theme}>
+      <MovieList {...pageProps}/>
     </ChakraProvider>
-  );
-};
+  )
+}
 
 export default App;
