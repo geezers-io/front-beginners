@@ -1,5 +1,5 @@
 /* modules */
-import {  Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react';
+import { Card, CardHeader, CardBody, CardFooter, theme as chakraTheme, extendBaseTheme } from '@chakra-ui/react';
 import { ChakraProvider } from '@chakra-ui/react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from '@/pages';
@@ -20,20 +20,20 @@ const router = createBrowserRouter([
   },
 ]);
 
-const { Button } = chakraTheme.components
+const { Button } = chakraTheme.components;
 
 const theme = extendBaseTheme({
   components: {
     Button,
   },
-})
+});
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <MovieList {...pageProps}/>
+      <MovieList />
     </ChakraProvider>
-  )
+  );
 }
 
 export default App;
