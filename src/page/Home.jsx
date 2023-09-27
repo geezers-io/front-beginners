@@ -1,3 +1,11 @@
 import react from "react";
-import test from "../api/test";
+import MovieList from "./MovieList";
 
+export default function Home() {
+    return (
+        <div>
+            <div>희정님</div>
+            <MovieList />
+        </div>
+    );
+}
