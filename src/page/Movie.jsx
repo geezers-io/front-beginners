@@ -1,5 +1,6 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
+import { Card, CardBody, Heading, Stack, Text } from '@chakra-ui/react';
 
 // export default function Movie({ title, poster_path, vote_average }){
 //     return(
@@ -13,24 +14,23 @@ import PropTypes from 'prop-types';
 //     )
 // }
 
-export default function Movie({movies}){
-    return(
-        <Card> 
-            <CarBody>
-                <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt="영화 포스터" />
-                <Stack>
-                    <Heading size='md'>{movies.title} </Heading>
-                    <Text> {movies.overview} </Text>
-                    <Text >{movies.vote_average} </Text>
-                </Stack>
-            </CarBody>
-        </Card>
-    )
+export default function Movie({ movie }) {
+  return (
+    <Card>
+      <CardBody>
+        <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt="영화 포스터" />
+        <Stack>
+          <Heading size="md">{movie.title}</Heading>
+          <Text> {movie.overview} </Text>
+          <Text>{movie.vote_average} </Text>
+        </Stack>
+      </CardBody>
+    </Card>
+  );
 }
 
-
-MovieCard.propTypes = {
-    movie: PropTypes.shape({
+Movie.propTypes = {
+  movie: PropTypes.shape({
     adult: PropTypes.bool,
     backdrop_path: PropTypes.string,
     genre_ids: PropTypes.arrayOf(PropTypes.number),
@@ -46,5 +46,5 @@ MovieCard.propTypes = {
     video: PropTypes.bool,
     vote_average: PropTypes.number,
     vote_count: PropTypes.number,
-    }),
+  }),
 };
