@@ -7,12 +7,13 @@
     "url": "git@github.com:geezers-io/front-beginners.git"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "craco start",
+    "build": "craco build",
     "lint": "eslint 'src/**/*.{js,jsx}' --fix"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.1",
+    "@craco/craco": "^7.1.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "framer-motion": "^10.16.4",
