@@ -1,39 +1,26 @@
-/* modules */
-import { theme as chakraTheme, extendTheme } from '@chakra-ui/react';
 import { ChakraProvider } from '@chakra-ui/react';
-import { createBrowserRouter } from 'react-router-dom';
-import Home from '@/pages';
-import About from '@/pages/about';
-import MovieList from './page/MovieList';
-
-/* css */
-import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import MovieListPage from '@/pages';
+import AboutPage from '@/pages/about';
+import theme from '@/styles/theme';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <MovieListPage />,
   },
   {
     path: 'about',
-    element: <About />,
+    element: <AboutPage />,
   },
 ]);
 
-const { Button } = chakraTheme.components;
-
-const theme = extendTheme({
-  components: {
-    Button,
-  },
-});
-
-function App() {
+const App = () => {
   return (
     <ChakraProvider theme={theme}>
-      <MovieList />
+      <RouterProvider router={router} />
     </ChakraProvider>
   );
-}
+};
 
 export default App;

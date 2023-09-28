@@ -2,19 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardBody, Heading, Stack, Text } from '@chakra-ui/react';
 
-// export default function Movie({ title, poster_path, vote_average }){
-//     return(
-//         <div className="movie-container">
-//             <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt="영화 포스터" />
-//             <div className="movie-info">
-//                 <h4>{title} </h4>
-//                 <span>{vote_average} </span>
-//             </div>
-//         </div>
-//     )
-// }
-
-export default function Movie({ movie }) {
+const MovieCard = ({ movie }) => {
   return (
     <Card>
       <CardBody>
@@ -27,9 +15,9 @@ export default function Movie({ movie }) {
       </CardBody>
     </Card>
   );
-}
+};
 
-Movie.propTypes = {
+MovieCard.propTypes = {
   movie: PropTypes.shape({
     adult: PropTypes.bool,
     backdrop_path: PropTypes.string,
@@ -48,3 +36,5 @@ Movie.propTypes = {
     vote_count: PropTypes.number,
   }),
 };
+
+export default MovieCard;
