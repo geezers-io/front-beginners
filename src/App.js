@@ -9,21 +9,25 @@ import Layout from './components/layout/layout';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <MovieListPage />,
-  },
-  {
-    path: 'about',
-    element: <AboutPage />,
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <MovieListPage />,
+      },
+      {
+        path: 'about',
+        element: <AboutPage />,
+      },
+    ],
   },
 ]);
 
 const App = () => {
   return (
-    <Layout>
-      <ChakraProvider theme={theme}>
-        <RouterProvider router={router} />
-      </ChakraProvider>
-    </Layout>
+    <ChakraProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ChakraProvider>
   );
 };
 
