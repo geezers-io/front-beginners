@@ -3,8 +3,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MovieListPage from '@/pages';
 import AboutPage from '@/pages/about';
 import theme from '@/styles/theme';
+import Layout from '@/components/layout/layout';
+
 import '@/App.css';
-import Layout from './components/layout/layout';
 
 const router = createBrowserRouter([
   {
