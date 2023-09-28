@@ -1,26 +1,23 @@
-/* modules */
 import { ChakraProvider } from '@chakra-ui/react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from '@/pages';
-import About from '@/pages/about';
-
-/* css */
-import './App.css';
+import MovieListPage from '@/pages';
+import AboutPage from '@/pages/about';
+import theme from '@/styles/theme';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <MovieListPage />,
   },
   {
     path: 'about',
-    element: <About />,
+    element: <AboutPage />,
   },
 ]);
 
 const App = () => {
   return (
-    <ChakraProvider theme={{}}>
+    <ChakraProvider theme={theme}>
       <RouterProvider router={router} />
     </ChakraProvider>
   );
