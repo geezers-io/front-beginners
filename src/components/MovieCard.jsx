@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardBody, Heading, Stack, Text } from '@chakra-ui/react';
+import { Card, CardBody, Heading, Stack, Text, CardFooter, Button } from '@chakra-ui/react';
 
 const MovieCard = ({ movie }) => {
+  const navigateToDetail = () => {
+    navigate('/');
+  };
+
   return (
     <Card>
       <CardBody>
@@ -13,6 +17,11 @@ const MovieCard = ({ movie }) => {
           <Text>{movie.vote_average} </Text>
         </Stack>
       </CardBody>
+      <CardFooter>
+        <Button onClick={navigateToDetail} variant="solid" colorScheme="blue">
+          imfomation
+        </Button>
+      </CardFooter>
     </Card>
   );
 };

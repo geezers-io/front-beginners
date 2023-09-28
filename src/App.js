@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MovieListPage from '@/pages';
 import AboutPage from '@/pages/about';
 import theme from '@/styles/theme';
+import '@/App.css';
+import Layout from './components/layout/layout';
 
 const router = createBrowserRouter([
   {
@@ -17,9 +19,11 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
-    <ChakraProvider theme={theme}>
-      <RouterProvider router={router} />
-    </ChakraProvider>
+    <Layout>
+      <ChakraProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ChakraProvider>
+    </Layout>
   );
 };
 
