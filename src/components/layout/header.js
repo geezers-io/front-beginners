@@ -1,12 +1,28 @@
-import './header.css';
+import styled from '@emotion/styled';
+import logo from './EUTCHA.png';
 
 const Header = () => {
   return (
-    <header className="header">
+    <Header_css>
       <div>
-        <h2>WATCHA!</h2>
+        <img src={logo} />
       </div>
-    </header>
+    </Header_css>
   );
 };
+
+const Header_css = styled.header`
+  height: 80px;
+  margin-top: 0;
+  background-color: black;
+  z-index: 10;
+
+  img {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
+
 export default Header;
