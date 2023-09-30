@@ -12,10 +12,12 @@ const Header = () => {
 };
 
 const Header_css = styled.header`
-  height: 80px;
   margin-top: 0;
+  padding: 10px 0;
+  margin-bottom: 1.8em;
   background-color: black;
   z-index: 10;
+  background-position: center;
 
   img {
     text-align: center;
