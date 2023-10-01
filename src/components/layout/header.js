@@ -1,17 +1,14 @@
 import styled from '@emotion/styled';
-import logo from './EUTCHA.png';
 
 const Header = () => {
   return (
-    <Header_css>
-      <div>
-        <img src={logo} />
-      </div>
-    </Header_css>
+    <SHeader>
+      <img src="/EUTCHA.png" />
+    </SHeader>
   );
 };
 
-const Header_css = styled.header`
+const SHeader = styled.header`
   margin-top: 0;
   padding: 10px 0;
   margin-bottom: 1.8em;

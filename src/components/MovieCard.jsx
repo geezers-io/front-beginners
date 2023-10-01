@@ -1,28 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardBody, Heading, Stack, Text, CardFooter, Button } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 const MovieCard = ({ movie }) => {
-  const navigateToDetail = () => {
-    navigate('/');
-  };
-
   return (
-    <Card>
-      <CardBody>
-        <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt="영화 포스터" />
-        <Stack>
-          <Heading size="md">{movie.title}</Heading>
-          <Text> {movie.overview} </Text>
-          <Text>{movie.vote_average} </Text>
-        </Stack>
-      </CardBody>
-      <CardFooter>
-        <Button onClick={navigateToDetail} variant="solid" colorScheme="blue">
-          imfomation
-        </Button>
-      </CardFooter>
-    </Card>
+    <Link href="/detail" /* TODO: detail 라우트 정해지면 삽입 */>
+      <Card>
+        <CardBody>
+          <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt="영화 포스터" />
+          <Stack>
+            <Heading size="md">{movie.title}</Heading>
+            <Text> {movie.overview} </Text>
+            <Text>{movie.vote_average} </Text>
+          </Stack>
+        </CardBody>
+      </Card>
+    </Link>
   );
 };
 

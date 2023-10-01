@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const Footer = () => {
   return (
-    <Footer_css>
+    <SFooter>
       <div>
         <h2>푸터</h2>
         <div>
@@ -11,11 +11,11 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-    </Footer_css>
+    </SFooter>
   );
 };
 
-const Footer_css = styled.footer`
+const SFooter = styled.footer`
   height: 80px;
   margin-top: auto;
   background-color: black;
