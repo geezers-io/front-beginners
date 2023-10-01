@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 const Header = () => {
   return (
     <SHeader>
-      <img src="/EUTCHA.png" />
+      <img src="/EUTCHA.png" width={500} />
     </SHeader>
   );
 };
