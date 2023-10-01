@@ -1,7 +1,10 @@
-import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import { extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
+  config: {
+    initialColorMode: 'dark', // 초기 색상
+    useSystemColorMode: false, // 시스템 색상 사용여부
+  },
   colors: {
     pink: {
       50: '#fff5f7',
@@ -27,12 +30,4 @@ const theme = extendTheme({
   },
 });
 
-function App() {
-  return (
-    <ChakraProvider theme={theme}>
-      <ColorModeScript initialColorMode="light" />
-    </ChakraProvider>
-  );
-}
-
-export default App;
+export default theme;
