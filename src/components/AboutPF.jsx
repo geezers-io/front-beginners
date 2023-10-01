@@ -16,7 +16,7 @@ const GitIcon = () => {
   );
 };
 
-const BoxPF = () => {
+const AboutPF = () => {
   return (
     <Box
       w="100%"
