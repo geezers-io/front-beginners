@@ -1,20 +1,34 @@
 import styled from '@emotion/styled';
 import { Tab, TabList, Tabs } from '@chakra-ui/react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
+  const { pathname } = useLocation();
+
+  const tabDefaultIndex = (() => {
+    switch (pathname) {
+      case '/':
+        return 0;
+      case 'about':
+        return 1;
+      default:
+        return -1;
+    }
+  })();
+
   return (
     <SHeader>
       <img src="/EUTCHA.png" width={500} />
 
       <nav>
-        <Tabs>
+        <Tabs defaultIndex={tabDefaultIndex}>
           <TabList>
-            <Tab Link href="/">
-              Home
-            </Tab>
-            <Tab Link href="/about">
-              About
-            </Tab>
+            <Link to="/">
+              <Tab>Home</Tab>
+            </Link>
+            <Link to="/about">
+              <Tab>About</Tab>
+            </Link>
           </TabList>
         </Tabs>
       </nav>

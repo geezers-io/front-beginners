@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const MovieCard = ({ movie }) => {
   return (
-    <Link href="/detail" /* TODO: detail 라우트 정해지면 삽입 */>
+    <Link to={`/detail/${movie.id}`} /* TODO: detail 라우트 정해지면 삽입 */>
       <Card>
         <CardBody>
           <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt="영화 포스터" />
