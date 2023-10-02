@@ -18,7 +18,7 @@ const Footer = () => {
 const SFooter = styled.footer`
   height: 80px;
   margin-top: auto;
-  background-color: black;
+  background-color: ${({ theme }) => theme.colors.black};
 
   h2 {
   }

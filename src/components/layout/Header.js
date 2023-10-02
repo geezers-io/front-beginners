@@ -39,7 +39,7 @@ const Header = () => {
 const SHeader = styled.header`
   padding: 10px 0;
   margin-bottom: 1.8em;
-  background-color: black;
+  background-color: ${({ theme }) => theme.colors.black};
 `;
 
 export default Header;
