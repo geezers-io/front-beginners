@@ -12,10 +12,7 @@ const Header = () => {
             <Tab Link href="/">
               Home
             </Tab>
-            <Tab Link href="/">
-              Detail
-            </Tab>
-            <Tab Link href="/">
+            <Tab Link href="/about">
               About
             </Tab>
           </TabList>
