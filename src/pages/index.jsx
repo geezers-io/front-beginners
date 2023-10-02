@@ -3,6 +3,7 @@ import { getMovies } from '@/api/client';
 import MovieCard from '@/components/MovieCard';
 import styled from '@emotion/styled';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { Flex } from '@chakra-ui/react';
 
 const MovieListPage = () => {
   const [movies, setMovies] = useState({
@@ -49,7 +50,7 @@ const MovieListPage = () => {
     <InfiniteScroll next={getMoreMovieList} dataLength={movieLength} loader={null} hasMore>
       <MovieList>
         {movies.list.map(item => (
-          <MovieCard key={item.title} movie={item} />
+          <MovieCard key={item.id} movie={item} />
         ))}
       </MovieList>
     </InfiniteScroll>
