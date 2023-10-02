@@ -12,7 +12,9 @@ const MovieCard = ({ movie }) => {
           <Stack>
             <Heading size="md">{movie.title}</Heading>
             <Text> {movie.overview} </Text>
-            <Text>{movie.vote_average} </Text>
+            <Text textColor="pink.primary" fontWeight={500}>
+              {movie.vote_average}{' '}
+            </Text>
           </Stack>
         </CardBody>
       </Card>

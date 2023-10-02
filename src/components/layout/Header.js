@@ -1,48 +1,30 @@
 import styled from '@emotion/styled';
-import { Tab, TabList, Tabs } from '@chakra-ui/react';
-import { Box, Link } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const { pathname } = useLocation();
 
-  const tabDefaultIndex = (() => {
-    switch (pathname) {
-      case '/':
-        return 0;
-      case 'about':
-        return 1;
-      default:
-        return -1;
-    }
-  })();
-
   return (
     <SHeader>
-      <Box>
+      <Box py={4}>
         <img src="/EUTCHA.png" alt="logo" width="300" height="auto" />
       </Box>
 
-      <nav>
-        <Tabs variant="unstyled" defaultIndex={tabDefaultIndex}>
-          <TabList>
-            <Link to="/">
-              <Tab _selected={{ color: 'pink.primary' }}>HOME</Tab>
-            </Link>
-            <Link to="/about">
-              <Tab _selected={{ color: 'pink.primary' }}>ABOUT</Tab>
-            </Link>
-          </TabList>
-        </Tabs>
-      </nav>
+      <Nav>
+        <SLink to="/" active={pathname === '/'}>
+          HOME
+        </SLink>
+        <SLink to="/about" active={pathname === '/about'}>
+          ABOUT
+        </SLink>
+      </Nav>
     </SHeader>
   );
 };
 
 const SHeader = styled.header`
-  padding: 10px 0;
-  margin-bottom: 1.8em;
   background-color: ${({ theme }) => theme.colors.black};
   position: sticky;
   top: 0;
@@ -51,9 +33,26 @@ const SHeader = styled.header`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  padding: 1rem;
-  padding-bottom: 1.33rem;
+  padding: 0 1rem;
   height: var(--header-height);
-  box-shadow: inset 0 -2px 0 0 ${({ theme }) => theme.colors.gray};
+  box-shadow: 0 2px 0 0 ${({ theme }) => theme.colors.gray};
+
+  img {
+    pointer-events: none;
+    user-select: none;
+  }
 `;
+
+const Nav = styled.nav`
+  display: flex;
+`;
+
+const SLink = styled(Link)`
+  display: block;
+  padding: 1em 1.33em;
+  text-decoration: none !important;
+  color: ${({ theme, active }) => (active ? theme.colors.pink.primary : theme.colors.white)};
+  font-weight: 500;
+`;
+
 export default Header;

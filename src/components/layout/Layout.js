@@ -1,18 +1,21 @@
 import React from 'react';
 import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import { Outlet } from 'react-router-dom';
+import styled from '@emotion/styled';
 
 const Layout = () => {
   return (
-    <div className="layout">
+    <div>
       <Header />
-      <main className="main">
+      <Main>
         <Outlet />
-      </main>
-      <Footer />
+      </Main>
     </div>
   );
 };
+
+const Main = styled.main`
+  padding: 2.4em;
+`;
 
 export default Layout;
