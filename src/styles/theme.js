@@ -12,7 +12,21 @@ const colors = {
   },
   black: '#000000',
   white: '#ffffff',
+  gray: '#333333',
 };
 
-const theme = extendTheme({ config, colors });
+const theme = extendTheme({
+  config,
+  colors,
+  fonts: {
+    body: 'Pretendard',
+  },
+  styles: {
+    global: {
+      'html, body': {
+        backgroundColor: 'black',
+      },
+    },
+  },
+});
 export default theme;

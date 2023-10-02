@@ -42,6 +42,7 @@ const MovieList = styled.div`
   grid-auto-rows: max-content;
   grid-auto-flow: row dense;
   gap: 2.5rem 1rem;
+  background-color: black;
 `;
 
 export default MovieListPage;
