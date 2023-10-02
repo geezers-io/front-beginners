@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
 import AboutPF from '@/components/AboutPF';
+import Trailer from '@/components/Trailer';
 
 const AboutPage = () => {
   return (
@@ -13,6 +14,7 @@ const AboutPage = () => {
       className="about"
       animation="fade-in 0.5s ease-in-out forwards"
     >
+      <Trailer />
       <AboutPF />
     </Box>
   );
