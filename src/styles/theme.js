@@ -23,10 +23,28 @@ const theme = extendTheme({
   },
   styles: {
     global: {
-      'html, body': {
-        backgroundColor: 'black',
+      html: {
         width: '100%',
         height: '100vh',
+      },
+      body: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'black',
+      },
+      '#root': {
+        width: '100%',
+        height: '100%',
+        scrollbarGutter: 'stable',
+        overflow: 'auto',
+      },
+      '::-webkit-scrollbar': {
+        width: '0.25rem',
+        backgroundColor: 'transparent',
+      },
+      '::-webkit-scrollbar-thumb': {
+        borderRadius: '4px',
+        backgroundColor: 'pink.primary',
       },
     },
   },
