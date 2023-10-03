@@ -28,6 +28,17 @@ const theme = extendTheme({
         width: '100%',
         height: '100vh',
       },
+      '::-webkit-scrollbar': {
+        w: '0.15rem',
+        backgroundColor: 'black',
+      },
+      '::-webkit-scrollbar-thumb': {
+        backgroundColor: 'pink.primary',
+        borderRadius: '1.4rem',
+      },
+      '*': {
+        scrollbarColor: 'pink.primary',
+      },
     },
   },
 });
