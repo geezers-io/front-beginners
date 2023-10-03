@@ -37,11 +37,9 @@ const MovieListPage = () => {
 
 const MovieList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 20rem);
-  grid-template-rows: repeat(auto-fit, minmax(20rem, 1fr));
-  grid-auto-rows: max-content;
-  grid-auto-flow: row dense;
-  gap: 2.5rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 2rem 1.66rem;
+  background-color: black;
 `;
 
 export default MovieListPage;
