@@ -9,10 +9,12 @@ const MovieCard = ({ movie }) => {
       <Card>
         <CardBody>
           <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt="영화 포스터" />
-          <Stack>
+          <Stack textColor="white">
             <Heading size="md">{movie.title}</Heading>
             <Text> {movie.overview} </Text>
-            <Text>{movie.vote_average} </Text>
+            <Text textColor="pink.primary" fontWeight={500}>
+              평점: <span> {movie.vote_average}</span>{' '}
+            </Text>
           </Stack>
         </CardBody>
       </Card>
