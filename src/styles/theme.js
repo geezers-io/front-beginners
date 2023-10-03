@@ -23,21 +23,28 @@ const theme = extendTheme({
   },
   styles: {
     global: {
-      'html, body': {
-        backgroundColor: 'black',
+      html: {
         width: '100%',
         height: '100vh',
       },
-      '::-webkit-scrollbar': {
-        w: '0.15rem',
+      body: {
+        width: '100%',
+        height: '100%',
         backgroundColor: 'black',
       },
-      '::-webkit-scrollbar-thumb': {
-        backgroundColor: 'pink.primary',
-        borderRadius: '1.4rem',
+      '#root': {
+        width: '100%',
+        height: '100%',
+        scrollbarGutter: 'stable',
+        overflow: 'auto',
       },
-      '*': {
-        scrollbarColor: 'pink.primary',
+      '::-webkit-scrollbar': {
+        width: '0.25rem',
+        backgroundColor: 'transparent',
+      },
+      '::-webkit-scrollbar-thumb': {
+        borderRadius: '4px',
+        backgroundColor: 'pink.primary',
       },
     },
   },
