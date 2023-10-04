@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <SHeader>
       <Box py={4}>
-        <img src="/eutcha.png" alt="logo" width="300" height="auto" />
+        <img src="/logo.png" alt="logo" width="300" height="auto" />
       </Box>
 
       <Nav>
