@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Box } from '@chakra-ui/react';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -8,9 +7,9 @@ const Header = () => {
 
   return (
     <SHeader>
-      <Box py={4}>
-        <img src="/logo.png" alt="logo" width="300" height="auto" />
-      </Box>
+      <Link to="/">
+        <img src="/logo.png" alt="logo" width="120" height="auto" />
+      </Link>
 
       <Nav>
         <SLink to="/" active={pathname === '/'}>
@@ -29,12 +28,12 @@ const SHeader = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
+  height: 80px;
   z-index: 1;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  height: var(--header-height);
   box-shadow: 0 2px 0 0 ${({ theme }) => theme.colors.gray};
 
   img {
@@ -44,12 +43,14 @@ const SHeader = styled.header`
 `;
 
 const Nav = styled.nav`
+  height: 100%;
   display: flex;
+  align-items: flex-end;
 `;
 
 const SLink = styled(Link)`
   display: block;
-  padding: 1em 1.33em;
+  padding: 18px 24px;
   text-decoration: none !important;
   color: ${({ theme, active }) => (active ? theme.colors.pink.primary : theme.colors.white)};
   font-weight: 500;
