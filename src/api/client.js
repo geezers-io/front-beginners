@@ -9,7 +9,26 @@ export const getMovie = movieId =>
 /**
  * @description
  * @param page
- * @returns {Promise<{ page: number; results: { adult: false; backdrop_path: string, id: number; title: string; original_language: string; original_title: string; overview: string; poster_path: string; media_type: string; genre_ids: number[]; popularity: number; release_date: string; video: boolean; vote_average: number; vote_count: number;}[] }>}
+ * @returns
+ * {Promise<{
+ *    page: number;
+ *    results: {
+ *      adult: false;
+ *      backdrop_path: string;
+ *      id: number; title: string;
+ *      original_language: string;
+ *      original_title: string;
+ *      overview: string;
+ *      poster_path: string;
+ *      media_type: string;
+ *      genre_ids: number[];
+ *      popularity: number;
+ *      release_date: string;
+ *      video: boolean;
+ *      vote_average: number;
+ *      vote_count: number;
+ *   }[]
+ * }>}
  */
 export const getMovies = (page = 1) =>
   fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=${page}`).then(data => data.json());

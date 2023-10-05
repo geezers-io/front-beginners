@@ -43,7 +43,7 @@ const MovieListPage = () => {
     return null;
   }
   return (
-    <InfiniteScroll load={getMoreMovieList} hasMore={false}>
+    <InfiniteScroll load={getMoreMovieList} hasMore>
       <MovieList>
         {movies.list.map(item => (
           <MovieCard key={item.id} movie={item} />
