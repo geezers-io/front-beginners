@@ -4,6 +4,7 @@ import MovieListPage from '@/pages';
 import AboutPage from '@/pages/about';
 import theme from '@/styles/theme';
 import Layout from '@/components/layout/Layout';
+import Detail from '@/pages/detail/[id]';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: 'about',
         element: <AboutPage />,
+      },
+      {
+        path: 'detail/:id',
+        element: <Detail />,
       },
     ],
   },
