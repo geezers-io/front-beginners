@@ -22,7 +22,7 @@ const InfiniteScroll = ({ children, load, hasMore, endMessage = 'No more data' }
     observerRef.current = new IntersectionObserver(handleIntersect, {
       root: null,
       rootMargin: '0px',
-      threshold: 1,
+      threshold: 0.8,
     });
 
     // Attach the observer to the sentinel element
