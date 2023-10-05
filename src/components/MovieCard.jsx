@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardBody, Heading, Stack, Text, CardFooter, Button } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import styled from '@emotion/styled';
 import VoteAverage from '@/components/VoteAverage';
 
 const MovieCard = ({ movie }) => {
