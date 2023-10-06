@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import Trailer from '@/components/Trailer';
 import React, { useEffect, useState } from 'react';
-import { Badge, Box, Center, Flex, Heading, ListItem, Text, UnorderedList } from '@chakra-ui/react';
+import { Badge, Box, Center, Flex, Heading, ListItem, Text, UnorderedList, useMediaQuery } from '@chakra-ui/react';
 import { getMovie, getMovieVideoInfo } from '@/api/client';
 import Loading from '@/components/Loading';
 import VoteAverage from '@/components/VoteAverage';
@@ -11,6 +11,8 @@ const Detail = () => {
   const [info, setInfo] = useState();
   const [trailerKey, setTrailerKey] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  const [isMobile] = useMediaQuery('(max-width: 768px)');
 
   const fetchMovieInfo = async id => {
     const info = await getMovie(id);
@@ -44,8 +46,8 @@ const Detail = () => {
 
   if (isLoading) {
     return (
-      <Box className="detail">
-        <Center height="100vh">
+      <Box className="detail" width="100%" height="100%" alignItems="center">
+        <Center>
           <Loading />
         </Center>
       </Box>
@@ -62,17 +64,27 @@ const Detail = () => {
           <Text fontSize="lg">Genres: {info.genres.map(genre => genre.name).join(', ')}</Text>
           <Text fontSize="lg">Runtime: {info.runtime} minutes</Text>
 
-          <Box className="movie-info">
+          <Box
+            className="movie-info"
+            flexDirection="column"
+            alignItems={isMobile ? 'center' : 'flex-start'}
+            p="1"
+            animation="fade-in 0.2s ease-in-out forwards"
+          >
             <Flex className="movie-info__summary">
-              <Box className="movie-info__summary__text-wrap">
-                <Text className="movie-info__title">{info.title}</Text>
-                <Text className="movie-info__year">{info.release_date}</Text>
+              <Box className="movie-info__summary__text-wrap" p="1.25rem 0.625rem">
+                <Text className="movie-info__title" size="lg" marginBottom="1" letterSpacing="-0.1rem">
+                  {info.title}
+                </Text>
+                <Text className="movie-info__year" opacity="0.5" marginLeft="0.1rem">
+                  {info.release_date}
+                </Text>
                 {info.runtime !== 0 && <Text className="movie-info__runtime">runtime: {info.runtime}</Text>}
 
                 <UnorderedList className="genre-list" listStyleType="none">
                   {info.genres.map((genre, idx) => (
                     <ListItem key={idx} className="genre-list__item">
-                      <Badge variant="outline" color="white" bgColor="gray">
+                      <Badge variant="outline" color="pink.primary" bgColor="lightgray">
                         {genre.name}
                       </Badge>
                     </ListItem>
