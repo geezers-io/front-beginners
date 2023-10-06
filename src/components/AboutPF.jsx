@@ -36,7 +36,7 @@ const GitIcon = () => {
 
 const AboutPF = () => {
   return (
-    <div textalign="center">
+    <div color="white">
       <Text fontSize="md">
         {' '}
         이 페이지는
