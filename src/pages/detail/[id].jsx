@@ -59,7 +59,6 @@ const Detail = () => {
             {info.title}
           </Heading>
           <VoteAverage average10={info.vote_average} starSize="2rem" />
-          <Text fontSize="lg">Year: {info.year}</Text>
           <Text fontSize="lg">Genres: {info.genres.map(genre => genre.name).join(', ')}</Text>
           <Text fontSize="lg">Runtime: {info.runtime} minutes</Text>
 
@@ -68,12 +67,14 @@ const Detail = () => {
               <Box className="movie-info__summary__text-wrap">
                 <Text className="movie-info__title">{info.title}</Text>
                 <Text className="movie-info__year">{info.release_date}</Text>
-                {info.runtime !== 0 && <Text className="movie-info__runtime">{info.runtime}</Text>}
+                {info.runtime !== 0 && <Text className="movie-info__runtime">runtime: {info.runtime}</Text>}
 
                 <UnorderedList className="genre-list" listStyleType="none">
                   {info.genres.map((genre, idx) => (
                     <ListItem key={idx} className="genre-list__item">
-                      <Badge variant="outline">{genre.name}</Badge>
+                      <Badge variant="outline" color="white" bgColor="gray">
+                        {genre.name}
+                      </Badge>
                     </ListItem>
                   ))}
                 </UnorderedList>
