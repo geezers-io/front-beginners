@@ -17,6 +17,8 @@ import {
   SlideFade,
   Collapse,
   Button,
+  Tag,
+  Tooltip,
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
@@ -33,6 +35,18 @@ const GitIcon = () => {
     </Flex>
   );
 };
+
+const CustomCard = () => (
+  <Box p="1">
+    <Tag>000</Tag>
+  </Box>
+);
+
+const CustomToolTip = () => (
+  <Tooltip label="Hover me" bg="white">
+    <CustomCard>T----</CustomCard>
+  </Tooltip>
+);
 
 const AboutPF = () => {
   return (
@@ -57,7 +71,7 @@ const AboutPF = () => {
         <br /> <br />
         <Text color="tomato"> 개인의 취향? </Text>
         너가 알아서 찾아봐!
-        <br />
+        <CustomToolTip /> <br />
         서비스가 없는 우리만의 특별한 매력!
         <br /> <br />
         나중에 여유가 되면 만들어볼게!
