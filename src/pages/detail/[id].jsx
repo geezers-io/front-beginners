@@ -8,6 +8,7 @@ const Detail = () => {
   const { id } = useParams();
   const [info, setInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [, setTrailerKey] = useState('');
 
   const getMovieInfos = async id => {
     try {
@@ -17,6 +18,21 @@ const Detail = () => {
       setIsLoading(false);
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const fetchMovieTrailer = async id => {
+    try {
+      const response = await axios.get(`'https://api.themoviedb.org/3/movie/movie_id/videos?language=en-US'`);
+
+      const { data } = response;
+      const videos = data.results;
+
+      if (videos.length > 0) {
+        setTrailerKey(videos[0].key);
+      }
+    } catch (error) {
+      console.error('Error fetching movie trailer:', error);
     }
   };
 
