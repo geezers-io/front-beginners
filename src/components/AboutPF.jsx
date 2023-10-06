@@ -11,16 +11,11 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  Fade,
-  ScaleFade,
-  Slide,
-  SlideFade,
-  Collapse,
-  Button,
   Tag,
   Tooltip,
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
+import PropTypes from 'prop-types';
 
 const GitIcon = () => {
   return (
@@ -42,16 +37,20 @@ const CustomCard = () => (
   </Box>
 );
 
-const CustomToolTip = () => (
-  <Tooltip label="Hover me" bg="white">
-    <CustomCard>T----</CustomCard>
+const CustomToolTip = ({ children }) => (
+  <Tooltip label="Hover me" bg="white" color="black">
+    <Tag color="white">{children}</Tag>
   </Tooltip>
 );
+
+CustomToolTip.propTypes = {
+  children: PropTypes.node,
+};
 
 const AboutPF = () => {
   return (
     <div color="white">
-      <Text fontSize="md">
+      <Text fontSize="md" color="white">
         {' '}
         이 페이지는
         <Highlight query="왓챠피디아" styles={{ px: '2', py: '1', rounded: 'full', bg: 'red.100' }}>
@@ -61,7 +60,7 @@ const AboutPF = () => {
       </Text>
       <img src="/logo.png" alt="logo" width="200" height="auto" /> <br />
       <Heading> 안녕하세요 읏챠~는... </Heading>
-      <Text fontSize="3xl">
+      <Text fontSize="3xl" color="white">
         <br />
         소박한 영화컨텐츠와 더불어 터무니없는 혜택들!
         <br />
@@ -71,7 +70,7 @@ const AboutPF = () => {
         <br /> <br />
         <Text color="tomato"> 개인의 취향? </Text>
         너가 알아서 찾아봐!
-        <CustomToolTip /> <br />
+        <CustomToolTip>희정입니다.</CustomToolTip> <br />
         서비스가 없는 우리만의 특별한 매력!
         <br /> <br />
         나중에 여유가 되면 만들어볼게!
