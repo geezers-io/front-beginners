@@ -2,49 +2,52 @@ import { useParams } from 'react-router-dom';
 import Trailer from '@/components/Trailer';
 import React, { useEffect, useState } from 'react';
 import { Badge, Box, Center, Flex, Heading, ListItem, Spinner, Text, UnorderedList } from '@chakra-ui/react';
-import { getMovie } from '@/api/client';
+import { getMovie, getMovieVideoInfo } from '@/api/client';
+import Loading from '@/components/Loading';
 
 const Detail = () => {
   const { id } = useParams();
-  const [info, setInfo] = useState(null);
+  const [info, setInfo] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [, setTrailerKey] = useState('');
+  const [trailerKey, setTrailerKey] = useState();
 
-  const getMovieInfos = async id => {
+  const getMovieInfo = async id => {
     try {
+      setIsLoading(true);
+
       const info = await getMovie(id);
 
       setInfo(info);
-      setIsLoading(false);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const fetchMovieTrailer = async id => {
     try {
-      const response = await axios.get(`'https://api.themoviedb.org/3/movie/movie_id/videos?language=en-US'`);
+      const videoInfo = await getMovieVideoInfo(id);
 
-      const { data } = response;
-      const videos = data.results;
-
-      if (videos.length > 0) {
-        setTrailerKey(videos[0].key);
-      }
+      const youtubeVideo = videoInfo.find(video => video.site === 'YouTube' && video.type === 'Trailer');
+      setTrailerKey(youtubeVideo?.key);
     } catch (error) {
       console.error('Error fetching movie trailer:', error);
     }
   };
 
   useEffect(() => {
-    getMovieInfos(Number(id));
+    const movieId = Number(id);
+
+    getMovieInfo(movieId);
+    fetchMovieTrailer(movieId);
   }, []);
 
   return (
     <Box className="detail">
       {isLoading ? (
         <Center height="100vh">
-          <Spinner size="xl" />
+          <Loading />
         </Center>
       ) : (
         <Flex>
