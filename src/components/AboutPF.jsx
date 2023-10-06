@@ -31,22 +31,6 @@ const GitIcon = () => {
   );
 };
 
-const CustomCard = () => (
-  <Box p="1">
-    <Tag>000</Tag>
-  </Box>
-);
-
-const CustomToolTip = ({ children }) => (
-  <Tooltip label="Hover me" bg="white" color="black">
-    <Tag color="white">{children}</Tag>
-  </Tooltip>
-);
-
-CustomToolTip.propTypes = {
-  children: PropTypes.node,
-};
-
 const AboutPF = () => {
   return (
     <div color="white">
@@ -70,7 +54,7 @@ const AboutPF = () => {
         <br /> <br />
         <Text color="tomato"> 개인의 취향? </Text>
         너가 알아서 찾아봐!
-        <CustomToolTip>희정입니다.</CustomToolTip> <br />
+        <br />
         서비스가 없는 우리만의 특별한 매력!
         <br /> <br />
         나중에 여유가 되면 만들어볼게!
@@ -90,7 +74,7 @@ const AboutPF = () => {
           </h2>
           <AccordionPanel pb={4}>
             앞으로의 무궁무진한 성장가능성을 가진 귀여운 개발자! <br />
-            취미는 독서 ! 전반적인 프로젝트의 분위기와 완성도에 90%를 기여하였습니당~! ㅎㅎ
+            저는 주로 about 페이지 디자인, home페이지 API 연결과 css 디자인, header, nav제작을 주로 하였습니다.
           </AccordionPanel>
         </AccordionItem>
 
@@ -103,7 +87,11 @@ const AboutPF = () => {
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={4}>준현이는 그냥 준현이.</AccordionPanel>
+          <AccordionPanel pb={4}>
+            준현이는 그냥 준현이. 는 아니고! <br /> <br />
+            전반적으로 맡은 역할
+            <br /> Header - CSS, Home - CSS, About - CSS, Paged Style Detail - CSS, Paged Style Router
+          </AccordionPanel>
         </AccordionItem>
       </Accordion>
       <br />
