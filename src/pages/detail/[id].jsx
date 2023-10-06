@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Badge, Box, Center, Flex, Heading, ListItem, Text, UnorderedList } from '@chakra-ui/react';
 import { getMovie, getMovieVideoInfo } from '@/api/client';
 import Loading from '@/components/Loading';
+import VoteAverage from '@/components/VoteAverage';
 
 const Detail = () => {
   const { id } = useParams();
@@ -57,6 +58,7 @@ const Detail = () => {
           <Heading as="h1" size="xl">
             {info.title}
           </Heading>
+          <VoteAverage average10={info.vote_average} starSize="2rem" />
           <Text fontSize="lg">Year: {info.year}</Text>
           <Text fontSize="lg">Genres: {info.genres.map(genre => genre.name).join(', ')}</Text>
           <Text fontSize="lg">Runtime: {info.runtime} minutes</Text>
