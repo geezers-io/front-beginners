@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Text, Link, Heading } from '@chakra-ui/react';
+import { Box, Flex, Text, Link, Heading, Highlight } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 const GitIcon = () => {
@@ -18,11 +18,24 @@ const GitIcon = () => {
 
 const AboutPF = () => {
   return (
-    <div>
-      <Heading> 안녕하세요 저희는... </Heading> {''}
-      <Text fontSize="3xl"> 프론트엔드 개발자를 꿈꾸는 새싹들입니다...</Text>
-      <Text fontSize="3xl"> 왓챠피디아를 기반으로 페이지를 제작하였습니다.</Text>
-      <Text fontSize="3xl"> 왓챠피디아를 기반으로 페이지를 제작하였습니다.</Text>
+    <div textalign="center">
+      <Heading>
+        {' '}
+        안녕하세요 저희는... <br />{' '}
+      </Heading>
+      <Text fontSize="3xl">
+        프론트엔드 개발자를 꿈꾸는 새싹들입니다...
+        <br />
+        <Highlight query="왓챠피디아" styles={{ px: '2', py: '1', rounded: 'full', bg: 'red.100' }}>
+          왓챠피디아
+        </Highlight>
+        를 기반으로 페이지를 제작하였습니다.
+        <br />
+        저희의 무궁무진한 가능성이 기대되시죠?
+        <br />
+        환상의 듀오인 제작자 임희정, 이준현의 멋진 앞날을 기대해주세요.
+      </Text>
+      <br />
       <Box
         w="100%"
         maxWidth="25rem"
