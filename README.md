@@ -5,7 +5,7 @@
 
 ## 구성
 📌 Open API - [TMDB](https://developer.themoviedb.org/docs/getting-started)<br/>
-📌 Stacks - React18, Chakra-ui, emotion, Axios<br/>
+📌 Stacks - React18, Chakra-ui, emotion<br/>
 📌 Rules - ESLint, Prettier
 
 1. 모바일 베이스, max-width 1024px
