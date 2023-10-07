@@ -1,18 +1,30 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Trailer from '@/components/Trailer';
 import React, { useEffect, useState } from 'react';
-import { Badge, Box, Center, Flex, Heading, ListItem, Text, UnorderedList, useMediaQuery } from '@chakra-ui/react';
+import {
+  Badge,
+  Box,
+  Center,
+  Divider,
+  Flex,
+  Heading,
+  IconButton,
+  Image,
+  ListItem,
+  Text,
+  UnorderedList,
+} from '@chakra-ui/react';
 import { getMovie, getMovieVideoInfo } from '@/api/client';
 import Loading from '@/components/Loading';
 import VoteAverage from '@/components/VoteAverage';
+import { ArrowBackIcon, ArrowLeftIcon } from '@chakra-ui/icons';
 
 const Detail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [info, setInfo] = useState();
   const [trailerKey, setTrailerKey] = useState();
   const [isLoading, setIsLoading] = useState(true);
-
-  const [isMobile] = useMediaQuery('(max-width: 768px)');
 
   const fetchMovieInfo = async id => {
     const info = await getMovie(id);
@@ -46,63 +58,56 @@ const Detail = () => {
 
   if (isLoading) {
     return (
-      <Box className="detail" width="100%" height="100%" alignItems="center">
-        <Center>
-          <Loading />
-        </Center>
-      </Box>
+      <Center w="100%" h="100%">
+        <Loading />
+      </Center>
     );
   }
   return (
-    <Box className="detail">
-      <Flex>
-        <Box flex="1">
-          <Heading as="h1" size="xl">
+    <Box>
+      <IconButton
+        aria-label="Back"
+        icon={<ArrowBackIcon fontSize={50} />}
+        onClick={() => navigate(-1)}
+        bgColor="transparent !important"
+        mb={4}
+      />
+
+      <Flex gap={10} flexDirection={{ base: 'column', lg: 'row' }}>
+        <Image src={`https://image.tmdb.org/t/p/w300/${info.poster_path}`} alt="영화 포스터" width={300} />
+
+        <Flex flexDirection="column" gap={2}>
+          <UnorderedList display="flex" gap={2} listStyleType="none" ml={0}>
+            {info.genres.map((genre, idx) => (
+              <ListItem key={idx}>
+                <Badge color="pink.primary" bgColor="gray" borderRadius="2px">
+                  {genre.name}
+                </Badge>
+              </ListItem>
+            ))}
+          </UnorderedList>
+
+          <Heading as="h1" fontSize="3rem">
             {info.title}
           </Heading>
-          <VoteAverage average10={info.vote_average} starSize="2rem" />
-          <Text fontSize="lg">Genres: {info.genres.map(genre => genre.name).join(', ')}</Text>
-          <Text fontSize="lg">Runtime: {info.runtime} minutes</Text>
 
-          <Box
-            className="movie-info"
-            flexDirection="column"
-            alignItems={isMobile ? 'center' : 'flex-start'}
-            p="1"
-            animation="fade-in 0.2s ease-in-out forwards"
-          >
-            <Flex className="movie-info__summary">
-              <Box className="movie-info__summary__text-wrap" p="1.25rem 0.625rem">
-                <Text className="movie-info__title" size="lg" marginBottom="1" letterSpacing="-0.1rem">
-                  {info.title}
-                </Text>
-                <Text className="movie-info__year" opacity="0.5" marginLeft="0.1rem">
-                  {info.release_date}
-                </Text>
-                {info.runtime !== 0 && <Text className="movie-info__runtime">runtime: {info.runtime}</Text>}
+          <VoteAverage average10={info.vote_average} starSize="1.66rem" />
 
-                <UnorderedList className="genre-list" listStyleType="none">
-                  {info.genres.map((genre, idx) => (
-                    <ListItem key={idx} className="genre-list__item">
-                      <Badge variant="outline" color="pink.primary" bgColor="lightgray">
-                        {genre.name}
-                      </Badge>
-                    </ListItem>
-                  ))}
-                </UnorderedList>
-              </Box>
-            </Flex>
+          <Flex gap="2px" whiteSpace="noWrap" color="gray3" fontSize="lg">
+            <Text>{info.release_date}</Text>
+            <Text px={1}>·</Text>
+            <Text>{info.runtime}m</Text>
+          </Flex>
 
-            <Box className="description">
-              <Text>{info.overview && `Official Trailer Video: ${info.overview}`}</Text>
-            </Box>
-          </Box>
-        </Box>
-
-        <Box flex="1">
-          <Trailer title={info.title} trailerCode={trailerKey} />
-        </Box>
+          <Text fontSize="1.2rem">{info.overview}</Text>
+        </Flex>
       </Flex>
+
+      <Divider borderColor="gray2" my={{ base: 10, lg: 15 }} />
+
+      <Box maxW={1024} margin="0 auto">
+        <Trailer title={info.title} trailerCode={trailerKey} />
+      </Box>
     </Box>
   );
 };
