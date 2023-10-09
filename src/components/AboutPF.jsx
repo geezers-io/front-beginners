@@ -1,9 +1,6 @@
-import React from 'react';
 import {
   Box,
-  Flex,
   Text,
-  Link,
   Heading,
   Highlight,
   Accordion,
@@ -11,40 +8,35 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  Tag,
-  Tooltip,
+  Link,
 } from '@chakra-ui/react';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
-import PropTypes from 'prop-types';
-
-const GitIcon = () => {
-  return (
-    <Flex flexDirection="column" alignItems="center" className="about__icon-wrap">
-      <img
-        className="about__icon"
-        src="https://cdn.icon-icons.com/icons2/936/PNG/512/github-logo_icon-icons.com_73546.png"
-        alt="Github Icon"
-        width="20px"
-        height="25px"
-      />
-    </Flex>
-  );
-};
+import GithubLink from '@/components/GithubLink';
 
 const AboutPF = () => {
   return (
-    <div color="white">
+    <Box color="white" width="2xl">
       <Text fontSize="md" color="white">
-        {' '}
-        이 페이지는
-        <Highlight query="왓챠피디아" styles={{ px: '2', py: '1', rounded: 'full', bg: 'red.100' }}>
+        이 서비스는
+        <Highlight query="왓챠피디아" styles={{ px: 2, py: 1, mx: 1, rounded: 'full', bg: 'pink' }}>
           왓챠피디아
         </Highlight>
         의 UI 디자인을 참조하여 페이지를 제작하였습니다. <br /> <br />
       </Text>
       <img src="/logo.png" alt="logo" width="200" height="auto" /> <br />
-      <Heading> 안녕하세요 읏챠~는... </Heading>
-      <Text fontSize="3xl" color="white">
+      <Heading>
+        안녕하세요
+        <Link
+          href="https://github.com/geezers-io/front-beginners"
+          isExternal
+          textDecoration="underline"
+          textUnderlineOffset={6}
+          mx={2}
+        >
+          읏챠~
+        </Link>
+        는...
+      </Heading>
+      <Text fontSize="xl" color="white">
         <br />
         소박한 영화컨텐츠와 더불어 터무니없는 혜택들!
         <br />
@@ -62,7 +54,7 @@ const AboutPF = () => {
         <br /> <br />
         개발자팀도 소개할게요!
       </Text>
-      <Accordion>
+      <Accordion mt={8} allowToggle allowMultiple>
         <AccordionItem>
           <h2>
             <AccordionButton>
@@ -73,6 +65,8 @@ const AboutPF = () => {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
+            <GithubLink endpoint="heejung0413" />
+            <br />
             앞으로의 무궁무진한 성장가능성을 가진 귀여운 개발자! <br />
             저는 주로 about 페이지 디자인, home페이지 API 연결과 css 디자인, header, nav제작을 주로 하였습니다.
           </AccordionPanel>
@@ -88,71 +82,15 @@ const AboutPF = () => {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
+            <GithubLink endpoint="Ellsy23" />
+            <br />
             준현이는 그냥 준현이. 는 아니고! <br /> <br />
             전반적으로 맡은 역할
             <br /> Header - CSS, Home - CSS, About - CSS, Paged Style Detail - CSS, Paged Style Router
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-      <br />
-      <br />
-      <Box
-        w="100%"
-        maxWidth="25rem"
-        minHeight="8rem"
-        display="flex"
-        alignItems="center"
-        flexDirection="column"
-        backgroundColor="#ffffff"
-        borderRadius="5px"
-        padding="1.33rem"
-      >
-        <Flex alignItems="center" className="text-wrap">
-          <GitIcon />
-          <Text fontSize="1.25rem" fontWeight="500" color="black">
-            Github{' '}
-          </Text>
-          <Link
-            href="https://github.com/geezers-io/front-beginners"
-            fontSize="1.25rem"
-            color="#000000"
-            textDecoration="none"
-            isExternal
-          >
-            geezers-io/front-beginners
-            <ExternalLinkIcon />
-          </Link>
-        </Flex>
-
-        <Flex alignItems="center" className="text-wrap">
-          <GitIcon />
-          <Text fontSize="1.25rem" fontWeight="500" color="black">
-            Github
-          </Text>
-          <Link href="https://github.com/Ellsy23" fontSize="1.25rem" color="#000000" textDecoration="none" isExternal>
-            Ellsy23
-            <ExternalLinkIcon />
-          </Link>
-        </Flex>
-
-        <Flex alignItems="center" className="text-wrap">
-          <GitIcon />
-          <Text fontSize="1.25rem" fontWeight="500" color="black">
-            Github
-          </Text>
-          <Link
-            href="https://github.com/heejung0413"
-            fontSize="1.25rem"
-            color="#000000"
-            textDecoration="none"
-            isExternal
-          >
-            heejung0413
-            <ExternalLinkIcon />
-          </Link>
-        </Flex>
-      </Box>
-    </div>
+    </Box>
   );
 };
 
