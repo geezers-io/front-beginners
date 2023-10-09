@@ -1,73 +1,113 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Trailer from '@/components/Trailer';
 import React, { useEffect, useState } from 'react';
-import { Badge, Box, Center, Flex, Heading, ListItem, Spinner, Text, UnorderedList } from '@chakra-ui/react';
-import { getMovie } from '@/api/client';
+import {
+  Badge,
+  Box,
+  Center,
+  Divider,
+  Flex,
+  Heading,
+  IconButton,
+  Image,
+  ListItem,
+  Text,
+  UnorderedList,
+} from '@chakra-ui/react';
+import { getMovie, getMovieVideoInfo } from '@/api/client';
+import Loading from '@/components/Loading';
+import VoteAverage from '@/components/VoteAverage';
+import { ArrowBackIcon, ArrowLeftIcon } from '@chakra-ui/icons';
 
 const Detail = () => {
   const { id } = useParams();
-  const [info, setInfo] = useState(null);
+  const navigate = useNavigate();
+  const [info, setInfo] = useState();
+  const [trailerKey, setTrailerKey] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  const getMovieInfos = async id => {
-    try {
-      const info = await getMovie(id);
+  const fetchMovieInfo = async id => {
+    const info = await getMovie(id);
 
-      setInfo(info);
+    setInfo(info);
+  };
+
+  const fetchMovieTrailer = async id => {
+    const { results } = await getMovieVideoInfo(id);
+
+    const youtubeVideo = results.find(video => video.site === 'YouTube' && video.type === 'Trailer');
+    setTrailerKey(youtubeVideo?.key);
+  };
+
+  const initialize = async movieId => {
+    try {
+      setIsLoading(true);
+
+      await Promise.all([fetchMovieInfo(movieId), fetchMovieTrailer(movieId)]);
+      console.log('done');
+    } catch (e) {
+      console.error(e);
+    } finally {
       setIsLoading(false);
-    } catch (error) {
-      console.error(error);
     }
   };
 
   useEffect(() => {
-    getMovieInfos(Number(id));
+    initialize(Number(id));
   }, []);
 
+  if (isLoading) {
+    return (
+      <Center w="100%" h="100%">
+        <Loading />
+      </Center>
+    );
+  }
   return (
-    <Box className="detail">
-      {isLoading ? (
-        <Center height="100vh">
-          <Spinner size="xl" />
-        </Center>
-      ) : (
-        <Flex>
-          <Box flex="1">
-            <Heading as="h1" size="xl">
-              {info.title}
-            </Heading>
-            <Text fontSize="lg">Year: {info.year}</Text>
-            <Text fontSize="lg">Genres: {info.genres.map(genre => genre.name).join(', ')}</Text>
-            <Text fontSize="lg">Runtime: {info.runtime} minutes</Text>
+    <Box>
+      <IconButton
+        aria-label="Back"
+        icon={<ArrowBackIcon fontSize={50} />}
+        onClick={() => navigate(-1)}
+        bgColor="transparent !important"
+        mb={4}
+      />
 
-            <Box className="movie-info">
-              <Flex className="movie-info__summary">
-                <Box className="movie-info__summary__text-wrap">
-                  <Text className="movie-info__title">{info.title}</Text>
-                  <Text className="movie-info__year">{info.release_date}</Text>
-                  {info.runtime !== 0 && <Text className="movie-info__runtime">{info.runtime}</Text>}
+      <Flex gap={10} flexDirection={{ base: 'column', lg: 'row' }}>
+        <Image src={`https://image.tmdb.org/t/p/w300/${info.poster_path}`} alt="영화 포스터" width={300} />
 
-                  <UnorderedList className="genre-list" listStyleType="none">
-                    {info.genres.map((genre, idx) => (
-                      <ListItem key={idx} className="genre-list__item">
-                        <Badge variant="outline">{genre.name}</Badge>
-                      </ListItem>
-                    ))}
-                  </UnorderedList>
-                </Box>
-              </Flex>
+        <Flex flexDirection="column" gap={2}>
+          <UnorderedList display="flex" gap={2} listStyleType="none" ml={0}>
+            {info.genres.map((genre, idx) => (
+              <ListItem key={idx}>
+                <Badge color="pink.primary" bgColor="gray" borderRadius="2px">
+                  {genre.name}
+                </Badge>
+              </ListItem>
+            ))}
+          </UnorderedList>
 
-              <Box className="description">
-                <Text>{info.overview && `Official Trailer Video: ${info.overview}`}</Text>
-              </Box>
-            </Box>
-          </Box>
+          <Heading as="h1" fontSize="3rem">
+            {info.title}
+          </Heading>
 
-          <Box flex="1">
-            <Trailer title={info.title} trailerCode={undefined} />
-          </Box>
+          <VoteAverage average10={info.vote_average} starSize="1.66rem" />
+
+          <Flex gap="2px" whiteSpace="noWrap" color="gray3" fontSize="lg">
+            <Text>{info.release_date}</Text>
+            <Text px={1}>·</Text>
+            <Text>{info.runtime}m</Text>
+          </Flex>
+
+          <Text fontSize="1.2rem">{info.overview}</Text>
         </Flex>
-      )}
+      </Flex>
+
+      <Divider borderColor="gray2" my={{ base: 10, lg: 15 }} />
+
+      <Box maxW={1024} margin="0 auto">
+        <Trailer title={info.title} trailerCode={trailerKey} />
+      </Box>
     </Box>
   );
 };

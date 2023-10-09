@@ -13,6 +13,8 @@ const colors = {
   black: '#000000',
   white: '#ffffff',
   gray: '#333333',
+  gray2: '#666666',
+  gray3: '#999999',
 };
 
 const theme = extendTheme({

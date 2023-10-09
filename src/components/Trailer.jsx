@@ -4,20 +4,19 @@ import { Box, Text } from '@chakra-ui/react';
 
 const Trailer = ({ title, trailerCode }) => {
   const src = `https://www.youtube.com/embed/${trailerCode}?autoplay=1`;
-  const isTrailer = Boolean(trailerCode);
+  const hassTrailer = Boolean(trailerCode);
 
   return (
     <Box
-      className={isTrailer ? 'trailer' : 'trailer trailer--none'}
       w="100%"
-      h={isTrailer ? '90%' : '100%'}
-      animation={isTrailer ? 'fade-in 0.5s ease-in-out forwards' : 'none'}
+      animation={hassTrailer ? 'fade-in 0.5s ease-in-out forwards' : 'none'}
       borderColor="black"
       borderWidth="1px"
       borderRadius="5px"
       overflow="hidden"
+      aspectRatio="1280 / 720"
     >
-      {isTrailer ? (
+      {hassTrailer ? (
         <iframe
           title={title}
           src={src}
@@ -28,7 +27,6 @@ const Trailer = ({ title, trailerCode }) => {
         ></iframe>
       ) : (
         <Text
-          className="trailer--none"
           position="relative"
           backgroundColor="rgba(255, 255, 255, 0.5)"
           color="white"

@@ -74,6 +74,31 @@ export const getMovie = movieId =>
   fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`).then(data => data.json());
 
 /**
+ * @typedef {Object} MovieVideoInfo
+ *
+ * @param {Object} data - The metadata for the trailer.
+ * @param {string} data.iso_639_1 - ISO 639-1 code for the language.
+ * @param {string} data.iso_3166_1 - ISO 3166-1 code for the country.
+ * @param {string} data.name - Name or title of the trailer.
+ * @param {string} data.key - Unique key or identifier for the trailer.
+ * @param {string} data.site - The website or platform where the trailer is hosted.
+ * @param {number} data.size - Quality or resolution of the trailer.
+ * @param {string} data.type - Type of media (e.g., "Trailer").
+ * @param {boolean} data.official - Indicates if the trailer is official or not.
+ * @param {string} data.published_at - The date and time when the trailer was published.
+ * @param {string} data.id - The unique identifier for the trailer.
+ */
+
+/**
+ * @param movieId {number}
+ * @returns {Promise<MovieVideoInfo>}
+ */
+export const getMovieVideoInfo = movieId =>
+  fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US&api_key=${API_KEY}`).then(data =>
+    data.json(),
+  );
+
+/**
  * @description
  * @param page
  * @returns

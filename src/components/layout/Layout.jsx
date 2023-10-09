@@ -5,17 +5,23 @@ import styled from '@emotion/styled';
 
 const Layout = () => {
   return (
-    <div>
+    <Container>
       <Header />
       <Main>
         <Outlet />
       </Main>
-    </div>
+    </Container>
   );
 };
 
+const Container = styled.div`
+  --max-w: 1600px;
+  --main-padding-x: 2.4em;
+`;
 const Main = styled.main`
-  padding: 2.4em;
+  margin: 0 auto;
+  max-width: var(--max-w);
+  padding: var(--main-padding-x);
 `;
 
 export default Layout;
