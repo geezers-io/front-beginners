@@ -23,7 +23,7 @@
         1. 개발자 프로필
         2. 깃허브 레포 주소
 3. 공용 레이아웃 - Nav, Main, Footer
-4. 컬러셋 - 넷플릭스 (https://brand.netflix.com/en/assets/logos/)
+4. 컬러셋 - WhatCha (https://ordinarypeople.info/work/watcha)
 
 
 ## Git branching model
