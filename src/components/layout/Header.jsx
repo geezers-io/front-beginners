@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTheme } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -24,7 +26,15 @@ const Header = () => {
 };
 
 const Container = styled.header`
-  --link-padding-x: 24px;
+  ${({ theme: { breakpoints } }) => {
+    return css`
+      --link-padding-x: 12px;
+
+      @media screen and (min-width: ${breakpoints.lg}) {
+        --link-padding-x: 24px;
+      }
+    `;
+  }};
 
   max-width: var(--max-w);
   margin: 0 auto;
