@@ -84,9 +84,16 @@ const AboutPF = () => {
           <AccordionPanel pb={4}>
             <GithubLink endpoint="Ellsy23" />
             <br />
-            준현이는 그냥 준현이. 는 아니고! <br /> <br />
+            준현이는 그냥 준현이 <br /> <br />
             전반적으로 맡은 역할
-            <br /> Header - CSS, Home - CSS, About - CSS, Paged Style Detail - CSS, Paged Style Router
+            <br />
+            Header - CSS
+            <br />
+            Home - CSS
+            <br />
+            About - CSS, Paged Style
+            <br />
+            Detail - CSS, Paged Style&Router
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
