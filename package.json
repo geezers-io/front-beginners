@@ -1,10 +1,10 @@
 {
-  "name": "front-beginners",
+  "name": "EUTCHA",
   "version": "0.1.0",
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "git@github.com:geezers-io/front-beginners.git"
+    "url": "git@github.com:geezers-io/EUTCHA.git"
   },
   "scripts": {
     "start": "craco start",

@@ -26,7 +26,7 @@ const AboutPF = () => {
       <Heading>
         안녕하세요
         <Link
-          href="https://github.com/geezers-io/front-beginners"
+          href="https://github.com/geezers-io/EUTCHA"
           isExternal
           textDecoration="underline"
           textUnderlineOffset={6}

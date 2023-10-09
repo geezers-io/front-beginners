@@ -1,7 +1,8 @@
-# Front Beginners
-영화 정보 웹사이트
+# EUTCHA
+리액트와 협업에 익숙해지기 위한 프론트 비기너 프로젝트
 
 ---
+![Preview](./PREVIEW.png)
 
 ## 구성
 📌 Open API - [TMDB](https://developer.themoviedb.org/docs/getting-started)<br/>
@@ -18,8 +19,6 @@
         3. 제목
         4. 평점
         5. 줄거리
-        6. 등장인물
-        7. 리뷰 (있으면)
     3. About
         1. 개발자 프로필
         2. 깃허브 레포 주소
